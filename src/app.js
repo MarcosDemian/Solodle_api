@@ -5,7 +5,7 @@ import { config } from 'dotenv';
 config()
 
 const app = express();
-const url = 'api/characters'
+const url = 'https://solodleapi.up.railway.app/api/characters'
 
 app.use(cors());
 app.use(express.json());
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(url, characterRoutes);
 
 app.listen(() => {
-  console.log(`Servidor corriendo en https://solodleapi.up.railway.app/${url}`);
+  console.log(`Servidor corriendo en ${url}`);
 });
 
 
