@@ -5,7 +5,7 @@ import { config } from 'dotenv';
 config()
 
 const app = express();
-const url = '/api/characters'
+const url = 'api/characters'
 
 app.use(cors());
 app.use(express.json());
