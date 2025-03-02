@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use(url, characterRoutes);
 
-app.listen(PORT, () => {
+app.listen(() => {
   console.log(`Servidor corriendo en https://solodleapi.up.railway.app/${url}`);
 });
 
