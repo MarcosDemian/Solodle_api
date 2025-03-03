@@ -16,5 +16,3 @@ app.use(url, characterRoutes);
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en ${url}`);
 });
-
-
