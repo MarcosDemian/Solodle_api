@@ -6,7 +6,7 @@ config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const baseUrl = 'api/characters'; // Ruta base para las rutas de personajes
+const baseUrl = '/api/characters'; // Ruta base para las rutas de personajes
 
 app.use(cors());
 app.use(express.json());
