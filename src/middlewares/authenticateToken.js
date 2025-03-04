@@ -15,20 +15,18 @@ export const authenticateToken = (req, res, next) => {
     }
 
     // Verifica si el token está a punto de expirar (por ejemplo, en menos de 5 minutos)
-    const now = Math.floor(Date.now() / 1000); // Tiempo actual en segundos
-    const exp = user.exp; // Tiempo de expiración del token
+    const now = Math.floor(Date.now() / 1000); 
+    const exp = user.exp; 
 
-    if (exp - now < 300 && !req.user.tokenRenewed) { // 300 segundos = 5 minutos
-      // Genera un nuevo token
+    if (exp - now < 300 && !req.user.tokenRenewed) {
       const newToken = jwt.sign(
         { userId: user.userId, username: user.username, role: user.role },
         jwtConfig.secret,
         { expiresIn: jwtConfig.expiresIn }
       );
     
-      // Envía el nuevo token en la cabecera de la respuesta
       res.setHeader('New-Access-Token', newToken);
-      req.user.tokenRenewed = true; // Marca el token como renovado
+      req.user.tokenRenewed = true;
     }
 
     req.user = user;

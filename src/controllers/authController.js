@@ -4,7 +4,6 @@ import db from '../database/db.js';
 import { body, validationResult } from 'express-validator';
 import { createUser, findUserByUsername } from '../models/UserModel.js';
 
-// Validaciones para el endpoint de login
 export const validateLogin = [
   body('username')
     .trim() // Elimina espacios en blanco al inicio y al final
@@ -19,7 +18,6 @@ export const validateLogin = [
     .isLength({ min: 6, max: 50 }).withMessage('La contraseña debe tener entre 6 y 50 caracteres'),
 ];
 
-// Validaciones para el endpoint de registro
 export const validateRegister = [
   body('username')
     .trim()
@@ -34,9 +32,7 @@ export const validateRegister = [
     .isLength({ min: 6, max: 50 }).withMessage('La contraseña debe tener entre 6 y 50 caracteres'),
 ];
 
-// Endpoint de login
 export const login = async (req, res) => {
-  // Verifica los errores de validación
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -69,9 +65,7 @@ export const login = async (req, res) => {
   }
 };
 
-// Endpoint de registro
 export const register = async (req, res) => {
-  // Verifica los errores de validación
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
