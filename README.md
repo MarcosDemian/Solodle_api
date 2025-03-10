@@ -2,6 +2,8 @@
 
 Esta API permite obtener información sobre los personajes de _Solo Leveling_, incluyendo sus atributos, habilidades y características clave.
 
+----------
+
 ## 🌍 **Base URL:**
 
 https://solodleapi.up.railway.app/api/characters
