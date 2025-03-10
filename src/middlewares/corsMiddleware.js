@@ -9,8 +9,13 @@ const corsMiddleware = (req, res, next) => {
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
     })(req, res, next);
-  }
-  else if (origin === 'https://solodle.netlify.app') {
+  } else if (origin === 'http://localhost:3000') {
+    cors({
+      origin: origin,
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      credentials: true,
+    })(req, res, next);
+  } else if (origin === 'https://solodle.netlify.app') {
     cors({
       origin: origin,
       methods: ['GET', 'POST'],
