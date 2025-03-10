@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 const baseUrl = '/api/characters'; // Ruta base para las rutas de personajes
 
 app.use(cors({
-  origin: 'https://solodle.netlify.app/',
+  origin: 'https://solodle.netlify.app',
   methods: ['GET', 'POST'],
   credentials: true,
 }));
