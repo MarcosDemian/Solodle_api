@@ -1,5 +1,5 @@
 ## <a href="https://emoji.gg/emoji/46886-sogsneer"><img src="https://cdn3.emoji.gg/emojis/46886-sogsneer.png" width="20px" height="20px" alt="SOGSneer"></a> **SOLODLE** <a href="https://emoji.gg/emoji/46886-sogsneer"><img src="https://cdn3.emoji.gg/emojis/46886-sogsneer.png" width="20px" height="20px" alt="SOGSneer"></a>
-<img src="https://tenor.com/es/view/sung-jin-woo-gif-13969306948371185050" width="35">
+<div class="tenor-gif-embed" data-postid="13969306948371185050" data-share-method="host" data-aspect-ratio="0.827309" data-width="100%"><a href="https://tenor.com/view/sung-jin-woo-gif-13969306948371185050">Sung Jin Woo Sticker</a>from <a href="https://tenor.com/search/sung+jin+woo-stickers">Sung Jin Woo Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 Esta API permite obtener información sobre los personajes de _Solo Leveling_, incluyendo sus atributos, habilidades y características clave.
 
