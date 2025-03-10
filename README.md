@@ -1,4 +1,4 @@
-<a href="https://emoji.gg/emoji/46886-sogsneer"><img src="https://cdn3.emoji.gg/emojis/46886-sogsneer.png" width="35px" height="35px" alt="SOGSneer"></a> **SOLODLE** <a href="https://emoji.gg/emoji/46886-sogsneer"><img src="https://cdn3.emoji.gg/emojis/46886-sogsneer.png" width="35px" height="35px" alt="SOGSneer"></a>
+## <a href="https://emoji.gg/emoji/46886-sogsneer"><img src="https://cdn3.emoji.gg/emojis/46886-sogsneer.png" width="20px" height="20px" alt="SOGSneer"></a> **SOLODLE** <a href="https://emoji.gg/emoji/46886-sogsneer"><img src="https://cdn3.emoji.gg/emojis/46886-sogsneer.png" width="35px" height="35px" alt="SOGSneer"></a>
 
 Esta API permite obtener información sobre los personajes de _Solo Leveling_, incluyendo sus atributos, habilidades y características clave.
 
