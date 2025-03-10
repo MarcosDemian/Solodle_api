@@ -1,3 +1,5 @@
+<a href="https://emoji.gg/emoji/8832-sologrin"><img src="https://cdn3.emoji.gg/emojis/8832-sologrin.gif" width="40px" height="40px" alt="sologrin"></a> <h1>SOLODLE</h1> <a href="https://emoji.gg/emoji/8832-sologrin"><img src="https://cdn3.emoji.gg/emojis/8832-sologrin.gif" width="40px" height="40px" alt="sologrin"></a>
+
 Esta API permite obtener información sobre los personajes de _Solo Leveling_, incluyendo sus atributos, habilidades y características clave.
 
 ## 🌍 **Base URL:**
