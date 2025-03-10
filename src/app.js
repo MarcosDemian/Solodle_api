@@ -13,7 +13,7 @@ app.use(corsMiddleware);
 app.options('*', (req, res) => {
   const origin = req.headers.origin;
 
-  if (origin === 'http://localhost:3000') {
+  if (origin === 'http://localhost:5173') {
     res.header('Access-Control-Allow-Origin', origin);
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');

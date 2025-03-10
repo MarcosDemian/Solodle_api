@@ -3,7 +3,7 @@ import cors from 'cors';
 const corsMiddleware = (req, res, next) => {
   const origin = req.headers.origin;
 
-  if (origin === 'http://localhost:3000') {
+  if (origin === 'http://localhost:5173') {
     cors({
       origin: origin,
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
