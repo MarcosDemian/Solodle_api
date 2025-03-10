@@ -1,8 +1,69 @@
+## <a href="https://emoji.gg/emoji/46886-sogsneer"><img src="https://cdn3.emoji.gg/emojis/46886-sogsneer.png" width="20px" height="20px" alt="SOGSneer"></a> **SOLODLE** <a href="https://emoji.gg/emoji/46886-sogsneer"><img src="https://cdn3.emoji.gg/emojis/46886-sogsneer.png" width="20px" height="20px" alt="SOGSneer"></a>
+
+<img src="https://tenor.com/qN5JKIUEmD0.gif" width="20px" height="20px" alt="SOGSneer">
+
 Esta API permite obtener información sobre los personajes de _Solo Leveling_, incluyendo sus atributos, habilidades y características clave.
+
+----------
 
 ## 🌍 **Base URL:**
 
 https://solodleapi.up.railway.app/api/characters
+
+## 🔐 **Autenticación**
+
+Todos los endpoints requieren autenticación mediante un **token JWT**. Para usarlos, agrega el siguiente encabezado en tus peticiones (solo peticiones de lectura):
+
+JSON
+
+```json
+1 - Debera iniciar sesión:
+
+Método: POST
+
+URL: http://localhost:3000/auth/login
+
+Body (raw, JSON):
+
+  {
+  "username": "public_user",
+  "password": "130203"
+  }   
+
+Respuesta: Obtendrás un token en la respuesta.
+
+2 - Usar el token:
+
+Método: GET
+
+URL: http://localhost:3000/characters
+
+Headers:
+
+Authorization: Bearer <token>
+
+-----------------------
+
+En cURL:
+
+1 - Iniciar sesión:
+
+curl -X POST http://localhost:3000/auth/login \
+
+-H "Content-Type: application/json" \
+
+-d '{"username":  "public_user",  "password":  "130203"}'
+
+Respuesta: Obtendrás un token en la respuesta.
+
+2 - Usar el token:
+
+curl -X GET http://localhost:3000/characters \
+
+-H "Authorization: Bearer <token>"
+```
+
+----------
 
 ## 🚀 **Características principales:**
 
@@ -20,24 +81,30 @@ JSON
 
 ```json
 Personajes:
-  {
-    "id":  1,
-    "name":  "Sung Jin-Woo",
-    "gender":  "Masculino",
-    "species":  "Humano",
-    "affiliation":  "Gremio de cazadores Ahjin",
-    "main_weapon":  "Daga",
-    "image": "https://res.cloudinary.com/drk2lotrs/image/upload/v1740543717/solo-leveling-characters/wkxq4se5ahtcx1ozzhjt.webp"
-  },
-  {
-    "id":  2,
-    "name":  "Cha Hae-In",
-    "gender":  "Femenino",
-    "species":  "Humano",
-    "affiliation":  "Gremio de Cazadores",
-    "main_weapon":  "Espada",
-    "image":  "https://res.cloudinary.com/drk2lotrs/image/upload/v1740544431/solo-leveling-characters/m3zsmormv6jags7w44us.webp"
-  }...
+    {
+        "id": 1,
+        "name": "Sung Jin-Woo",
+        "gender": "Masculino",
+        "species": "Humano",
+        "affiliation": "Gremio de cazadores Ahjin",
+        "image": "https://res.cloudinary.com/drk2lotrs/image/upload/v1740544431/solo-leveling-characters/mdmiwklsxm8s8juwhsl2.webp",
+        "main_weapon": [
+            "Dagas"
+        ],
+        "image_150x150": "https://res.cloudinary.com/drk2lotrs/image/upload/v1741575134/solo-leveling-150x150/ppnkkmecublrua8wxrht.webp"
+    },
+    {
+        "id": 2,
+        "name": "Cha Hae-In",
+        "gender": "Femenino",
+        "species": "Humano",
+        "affiliation": "Gremio de Cazadores",
+        "image": "https://res.cloudinary.com/drk2lotrs/image/upload/v1740544431/solo-leveling-characters/m3zsmormv6jags7w44us.webp",
+        "main_weapon": [
+            "Espada"
+        ],
+        "image_150x150": "https://res.cloudinary.com/drk2lotrs/image/upload/v1741575609/solo-leveling-150x150/pxktb3n6zgl0pca9nf2p.webp"
+    }...
 -----------------------------------------------------------
 Atributos:
  {
@@ -62,15 +129,18 @@ JSON
 
 ```json
 Personaje:
-  {
-    "id":  1,
-    "name":  "Sung Jin-Woo",
-    "gender":  "Masculino",
-    "species":  "Humano",
-    "affiliation":  "Gremio de cazadores Ahjin",
-    "main_weapon":  "Daga",
-    "image":  "https://res.cloudinary.com/drk2lotrs/image/upload/v1740543717/solo-leveling-characters/wkxq4se5ahtcx1ozzhjt.webp"
-  }
+    {
+        "id": 1,
+        "name": "Sung Jin-Woo",
+        "gender": "Masculino",
+        "species": "Humano",
+        "affiliation": "Gremio de cazadores Ahjin",
+        "image": "https://res.cloudinary.com/drk2lotrs/image/upload/v1740544431/solo-leveling-characters/mdmiwklsxm8s8juwhsl2.webp",
+        "main_weapon": [
+            "Dagas"
+        ],
+        "image_150x150": "https://res.cloudinary.com/drk2lotrs/image/upload/v1741575134/solo-leveling-150x150/ppnkkmecublrua8wxrht.webp"
+    }
 ----------------------------------------------------
 Atributo:
   {
@@ -121,8 +191,11 @@ Personaje:
     "gender":  "Masculino / Femenino",
     "species":  "Humano / Insecto / Sombra / ...",
     "affiliation":  "Gremio de cazadores XX / Monarca / ...",
-    "main_weapon":  "Daga / Espada / ...",
     "image":  "https://res.cloudinary.com/drk2lotrs/image/upload/v1740543717/solo-leveling-characters/wkxq4se5ahtcx1ozzhjt.webp"
+    "main_weapon":  [
+        "Daga", 
+        "Espada", ...],
+    "image_150x150":  "https://res.cloudinary.com/drk2lotrs/image/upload/v1741575134/solo-leveling-150x150/ppnkkmecublrua8wxrht.web"
   }
 
 ------------------------------------------------------
@@ -135,9 +208,9 @@ Atributo:
 
 ----------
 
-### 📌 **5. Actualizar un personaje / atributo**
+### 📌 **5. Actualizar un personaje / atributo (SU PUEDE PASAR SOLO EL DATO QUE SE QUIERA CAMBIAR)**
 
-**Método:**  `PUT`  **URL:**  `/characters/{id} | /attributes/:id`  **Descripción:** Modifica la información de un personaje. **Body (JSON) (****`PUT /characters/1 | /attributes/1`****):**
+**Método:**  `PATCH`  **URL:**  `/characters/{id} | /attributes/:id`  **Descripción:** Modifica la información de un personaje. **Body (JSON) (****`PUT /characters/1 | /attributes/1`****):**
 
 JSON
 
@@ -148,8 +221,9 @@ Personaje:
     "gender": "Masculino",
     "species": "Humano",
     "affiliation": "Gremio de cazadores Ahjin / Monarca", //dato actualizado
-    "main_weapon": "Dagas / espadas", ///dato actualizado
-    "image": "https://res.cloudinary.com/drk2lotrs/image/upload/v1740544431/solo-leveling-characters/mdmiwklsxm8s8juwhsl2.webp"
+    "image": "https://res.cloudinary.com/drk2lotrs/image/upload/v1740543717/solo-leveling-characters/wkxq4se5ahtcx1ozzhjt.webp"
+    "main_weapon": ["Dagas"], ["espadas"], ///dato actualizado
+    "image_150x150": "https://res.cloudinary.com/drk2lotrs/image/upload/v1741575134/solo-leveling-150x150/ppnkkmecublrua8wxrht.web"
  }
 ------------------------------------------------------------------
 Atributo:
@@ -177,61 +251,6 @@ Atributo:
   {
     "message":  "Atributo eliminado"
   }
-```
-
-----------
-
-## 🔐 **Autenticación**
-
-Algunos endpoints pueden requerir autenticación mediante un **token JWT**. Para usarlos, agrega el siguiente encabezado en tus peticiones:
-
-JSON
-
-```json
-1 - Debera iniciar sesión:
-
-Método: POST
-
-URL: http://localhost:3000/auth/login
-
-Body (raw, JSON):
-
-  {
-    "username":  "usuario1",
-    "password":  "contraseña1"
-  }
-
-Respuesta: Obtendrás un token en la respuesta.
-
-2 - Usar el token:
-
-Método: GET
-
-URL: http://localhost:3000/characters
-
-Headers:
-
-Authorization: Bearer <token>
-
------------------------
-
-En cURL:
-
-1 - Iniciar sesión:
-
-curl -X POST http://localhost:3000/auth/login \
-
--H "Content-Type: application/json" \
-
--d '{"username":  "usuario1",  "password":  "contraseña1"}'
-
-Respuesta: Obtendrás un token en la respuesta.
-
-2 - Usar el token:
-
-curl -X GET http://localhost:3000/characters \
-
--H "Authorization: Bearer <token>"
 ```
 
 ----------
