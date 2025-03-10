@@ -40,14 +40,20 @@ export const createCharacter = async (req, res) => {
 
 export const updateCharacter = async (req, res) => {
   const { id } = req.params;
-  const { name, gender, species, affiliation, main_weapon, image, image_150x150 } = req.body;
-
-  if (!name || !gender || !species || !affiliation || !main_weapon || !image || !image_150x150) {
-    return res.status(400).json({ error: "Todos los campos son requeridos" });
-  }
 
   try {
-    const updatedCharacter = { name, gender, species, affiliation, main_weapon, image, image_150x150 };
+    const updatedCharacter = {};
+    const fields = ['name', 'gender', 'species', 'affiliation', 'main_weapon', 'image', 'image_150x150'];
+
+    fields.forEach((field) => {
+      if (req.body[field] !== undefined) {
+        updatedCharacter[field] = req.body[field];
+      }
+    });
+
+    if (Object.keys(updatedCharacter).length === 0) {
+      return res.status(400).json({ error: "Se requiere al menos un campo para actualizar" });
+    }
 
     const affectedRows = await Character.update(id, updatedCharacter);
 

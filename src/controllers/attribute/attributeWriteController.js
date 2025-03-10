@@ -14,12 +14,27 @@ export const createAttribute = async (req, res) => {
 };
 
 export const updateAttribute = async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const updatedAttribute = req.body;
-    await Attribute.update(req.params.id, updatedAttribute);
-    cache.del(`attribute_${req.params.id}`); 
-    cache.del('allAttributes'); 
-    res.json({ id: req.params.id, ...updatedAttribute });
+    const updatedAttribute = {};
+    if (req.body.name !== undefined) {
+      updatedAttribute.name = req.body.name;
+    }
+    if (req.body.description !== undefined) {
+      updatedAttribute.description = req.body.description;
+    }
+
+    if (Object.keys(updatedAttribute).length === 0) {
+      return res.status(400).json({ error: "Se requiere al menos un campo para actualizar" });
+    }
+
+    await Attribute.update(id, updatedAttribute);
+
+    cache.del(`attribute_${id}`);
+    cache.del('allAttributes');
+
+    res.json({ id, ...updatedAttribute });
   } catch (error) {
     res.status(500).json({ error: 'Error al actualizar el atributo' });
   }

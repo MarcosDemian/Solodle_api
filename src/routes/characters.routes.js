@@ -15,7 +15,7 @@ router.post('/register', register);
 router.get('/attributes', authenticateToken, authorizeRole('user', 'admin'), attributeController.getAllAttributes); 
 router.get('/attributes/:id', authenticateToken, authorizeRole('user', 'admin'), attributeController.getAttributeById); 
 router.post('/attributes', authenticateToken, authorizeRole('admin'), attributeController.createAttribute); 
-router.put('/attributes/:id', authenticateToken, authorizeRole('admin'), attributeController.updateAttribute); 
+router.patch('/attributes/:id', authenticateToken, authorizeRole('admin'), attributeController.updateAttribute); 
 router.delete('/attributes/:id', authenticateToken, authorizeRole('admin'), attributeController.deleteAttribute); 
 
 // Rutas para character
@@ -27,7 +27,7 @@ router.get('/species/:species', authenticateToken, authorizeRole('user', 'admin'
 router.get('/affiliation/:affiliation', authenticateToken, authorizeRole('user', 'admin'), characterController.getCharactersByAffiliation);
 router.get('/attribute/:id/attributes', authenticateToken, authorizeRole('user', 'admin'), characterController.getCharacterAttributes);
 router.post('/', authenticateToken, authorizeRole('admin'), upload.single('image'), characterController.createCharacter);
-router.put('/:id', authenticateToken, authorizeRole('admin'), characterController.updateCharacter);
+router.patch('/:id', authenticateToken, authorizeRole('admin'), characterController.updateCharacter);
 router.delete('/:id', authenticateToken, authorizeRole('admin'), characterController.deleteCharacter);
 
 export default router;
