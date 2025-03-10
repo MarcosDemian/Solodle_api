@@ -9,13 +9,24 @@ export const createCharacter = async (req, res) => {
   try {
     const newCharacter = req.body;
 
-    if (req.file) {
-      const result = await cloudinary.uploader.upload(req.file.path, {
-        folder: 'solo-leveling-characters',
-      });
-      newCharacter.image = result.secure_url;
-      fs.unlinkSync(req.file.path);
+    if (!req.files || !req.files.image || !req.files.image_150x150) {
+      return res.status(400).json({ error: "Ambas imágenes (image y image_150x150) son requeridas" });
     }
+
+    const { image, image_150x150 } = req.files;
+
+    const result = await cloudinary.uploader.upload(image[0].path, {
+      folder: 'solo-leveling-characters',
+    });
+    newCharacter.image = result.secure_url;
+    fs.unlinkSync(image[0].path); 
+
+    const result150x150 = await cloudinary.uploader.upload(image_150x150[0].path, {
+      folder: 'solo-leveling-150x150',
+      transformation: [{ width: 150, height: 150, crop: 'fill' }]
+    });
+    newCharacter.image_150x150 = result150x150.secure_url;
+    fs.unlinkSync(image_150x150[0].path);
 
     const insertId = await Character.create(newCharacter);
 
@@ -29,14 +40,14 @@ export const createCharacter = async (req, res) => {
 
 export const updateCharacter = async (req, res) => {
   const { id } = req.params;
-  const { name, gender, species, affiliation, main_weapon, image } = req.body;
+  const { name, gender, species, affiliation, main_weapon, image, image_150x150 } = req.body;
 
-  if (!name || !gender || !species || !affiliation || !main_weapon || !image) {
+  if (!name || !gender || !species || !affiliation || !main_weapon || !image || !image_150x150) {
     return res.status(400).json({ error: "Todos los campos son requeridos" });
   }
 
   try {
-    const updatedCharacter = { name, gender, species, affiliation, main_weapon, image };
+    const updatedCharacter = { name, gender, species, affiliation, main_weapon, image, image_150x150 };
 
     const affectedRows = await Character.update(id, updatedCharacter);
 

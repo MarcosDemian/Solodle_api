@@ -37,24 +37,24 @@ class Character {
   }
 
   static async create(character) {
-    const { name, gender, species, affiliation, main_weapon, image } = character;
+    const { name, gender, species, affiliation, main_weapon, image, image_150x150 } = character;
     const [result] = await pool.query(
-      'INSERT INTO characters (name, gender, species, affiliation, main_weapon, image) VALUES (?, ?, ?, ?, ?, ?)',
-      [name, gender, species, affiliation, main_weapon, image]
+      'INSERT INTO characters (name, gender, species, affiliation, main_weapon, image, image_150x150) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [name, gender, species, affiliation, main_weapon, image, image_150x150]
     );
     return result.insertId;
   }
 
   static async update(id, character) {
-    const { name, gender, species, affiliation, main_weapon, image } = character;
+    const { name, gender, species, affiliation, main_weapon, image, image_150x150 } = character;
   
-    if (!name || !gender || !species || !affiliation || !main_weapon || !image) {
+    if (!name || !gender || !species || !affiliation || !main_weapon || !image || !image_150x150) {
       throw new Error('Todos los campos son requeridos');
     }
 
     const [result] = await pool.query(
-      'UPDATE characters SET name = ?, gender = ?, species = ?, affiliation = ?, main_weapon = ?, image = ? WHERE id = ?',
-      [name, gender, species, affiliation, main_weapon, image, id]
+      'UPDATE characters SET name = ?, gender = ?, species = ?, affiliation = ?, main_weapon = ?, image = ?, image_150x150 = ? WHERE id = ?',
+      [name, gender, species, affiliation, main_weapon, image, image_150x150, id]
     );
 
     return result.affectedRows;
