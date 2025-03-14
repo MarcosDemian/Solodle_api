@@ -1,11 +1,11 @@
 import cache from '../../config/cache.js';
+import moment from 'moment-timezone';
 
 //Función para calcular la próxima medianoche
 export const getNextMidnight = () => {
-  const now = new Date();
-  const midnight = new Date(now);
-  midnight.setHours(24, 0, 0, 0);
-  return midnight;
+  const now = moment().tz('America/Argentina/Buenos_Aires');
+  const midnight = now.clone().endOf('day').add(1, 'second'); // Próxima medianoche
+  return midnight.toDate();
 };
 
 //Helper para manejar errores
